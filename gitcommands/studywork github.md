@@ -41,7 +41,7 @@ git revert philosophy
     git commit -m "what ever the message" (has to have a message) commits the file
     git branch -M main  
     git remote add origin "https://github.com/username/whateveryourreponameis.git"
-    git push u main  pushes the files to the repo
+    git push -u main  pushes the files to the repo
 
     git status  give you the status of your git
 
