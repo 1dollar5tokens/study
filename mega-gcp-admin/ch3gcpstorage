@@ -38,7 +38,28 @@ Persistent storage
     You can add addition disks during the creation of the vm through click ops
 
     You can take snapshots of the disk even if the vm is running
-    left off on pg109
+    
+    all data is encrypted by the compute engine before it travels outside the vm and is written on the persistent disk.
+        each persistent disk is encrypted either by the system defined or customer supplied keys.  Once you delete a persistent disk, Google discards its cipher keys and that data is irretrievable.
+    max size of disk 64tb
+    most vm's are max 64tb of disk storage space and max of 16 attached disks.
+    custom vm's with less than 3.75gb of memory are limited to 3tb of total persistent disk space and a max of 4 attached disks.
+    remember that the total persistent disk space of vm's includes te size of the root disk.
+
+            attaching more than 16 disks is available in the beta feature where you can go up to 128 attached persistent disks for perdefined machine types
+
+    another option in persistent disks is the aility to use LOCAL SSDs that are physically attached to the server that hosts the vm.  It gives you disks with higher throughput and lower latency than the standard or ssd(network based) persistent disks
+    LOCAL SSDs connect through both SCSI(small computer system interface(plugs)) AND NVMe(non-volatile memory express interface(connects ssd to CPUs or servers using the PCI express(PCIe) bus)) interfaces, using a LOCAL SSD also does not count towards your network egress bandwidth cap
+
+    The catch is that it only last as long as the vm is up and running.  
+    Data remains on the local ssd if you reboot the vm or if you live migrate the vm.
+        During a live migration, all data from the local ssd is copied to the vm itself and you will notice a performance decrease.  If the instance is stopped or deleted, all data is lost
+
+    Local SSDs need to be manually stripped into a single logical volume to achieve the best performance.
+    Each local SSD disk is 375gb in size and you can attach up to 8 local SSD disks to give you a total of 3tb of storage space per vm
+    
+
+    
 
 
 
