@@ -1,0 +1,47 @@
+We have 5 storage options
+    persistent storage  
+    google cloud storage buckets
+    google cloud spanner
+    google cloud sql
+    google cloud bigtable
+
+Persistent storage
+    Persistent storage consist of persistent disks that are durable network storage devices that are mapped to your instance. like virtual hard drives (ssd hdd). They can be resized for more storage
+
+    they are independent of instances(vm)
+        data stays on the disk even if you delete the vm it will stay on the disk unless you delete the disk also.
+    The data is redundant and optimized for performance
+    
+    Compute engine is the service the supplies the vm with os
+        local and durable storage options
+        predefined machine types with specific amounts of vCPU and memory
+        custom machine types the allow users to tailor their infrastructure to their workload
+        integration with google cloud tech. such as Cloud Storage, App Engine, and Big Query
+
+    Vm's is a computer within a computer that allows users to run diff OS and software on a single physical computer. 
+        memory
+        network
+        CPU
+        a hypervisor that manages the resources to ensure that each VM operates efficiently
+    
+    The compute engine, by default, gets deployed with a disk and contains a operating system(os) 
+    You can add more disks if you need them
+    Disks are can only exist in only one zone in a region and doesnt expand to multiple zones or   regions
+
+    The vm writes data to the disks 3 times in parallel  to achieve a high rate of redundancy
+        consider one persistent disk per partition instead of having multiple partitions on a single persistent disk.  For additional partitions, add additional persistent disks
+
+    IOPS - input/output per second
+
+    if the vm needs high IOPS then consider SSD (solid state drive)
+
+    You can add addition disks during the creation of the vm through click ops
+
+    You can take snapshots of the disk even if the vm is running
+    left off on pg109
+
+
+
+
+
+    
