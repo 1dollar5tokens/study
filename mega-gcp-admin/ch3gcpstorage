@@ -5,7 +5,7 @@ We have 5 storage options
     google cloud sql
     google cloud bigtable
 
-Persistent storage
+PERSISTENT STORAGE
     Persistent storage consist of persistent disks that are durable network storage devices that are mapped to your instance. like virtual hard drives (ssd hdd). They can be resized for more storage
 
     they are independent of instances(vm)
@@ -57,7 +57,50 @@ Persistent storage
 
     Local SSDs need to be manually stripped into a single logical volume to achieve the best performance.
     Each local SSD disk is 375gb in size and you can attach up to 8 local SSD disks to give you a total of 3tb of storage space per vm
+
+
+GOOGLE CLOUD STORAGE BUCKET
+
+    For apps that do not have low latency requirements(like first person shooters), GCS Buckets are the answer. Buckets form and object(pics files etc.) storage system that offers a very flexible, reliable, and scalable storage option for a compute engine vm.  Buckets also make it possible to share vm data across multiple vms and zones.  You can use buckets for your on premise vms as well as other cloud service providers.
+
+    The performance is depends on the location of the bucket relative to the vm and the storage class of the bucket you are using.
+        There are 4 classes. 
+            multi-regional
+            regional
+            nearline
+            coldline
+        While all storage classes offer the same throughput and low latency, they differ primarily in their availability, minimum storage durations and pricing.
+
+            To use a cloud storage bucket in an instance, you need to use the google cloud storage FILESYSTEM IN USERSPACE(FUSE) tool, which is an open source adapter for mounting cloud storage buckets. the mounted bucket behaves as a persistent disk and has a higher latency.
+
+        Multi-regional
+            is a geo-redundant storage that is appropriate for frequently accessed data.  This ensures that cloud storage will store the data in at least two separate geographical locations.  Cloud makes sure that as soon as you upload the data that it is stored in two different places. It offers a 99.9% availability SLA(Service Level Agreement). Note that multi-regional storage is in select locations.  cost the most of the 4 classes
+
+        Regional
+            this is for storing data in the same region and doesnt offer redundancy.  Having data stored within a region gives you better performance.  Regional storage offers a 99.90 SLA.
+
+        Nearline
+            This for data that will be rarely used, once a month or so. 99.00 SLA and carries a data retrieval costs along with a 30-day minimus storage duration.
+
+        Coldline
+            Is for very rarely accessed data such as archives and archival backups. lowest cost. 99.0 SLA availability and a data retrieval costs along with a 90-day minimum storage duration.
+
+                If no class is selected then it defaults to Multi-regional if in a multi-regional region.  If in just a Regional then the standard with be regional
+
+        Creating a bucket 
+            go to storage, create a bucket, name it with an unique name has to be different than everyone else. choose a class.
+            You can transfer data from amazon s3 vm or from any other http/https vm or third party buckets in to google storage buckets. this is ideal for data less than 20TB in size
+
+            to transfer select transfer, select a source, and which bucket you want.
+
+            for buckets with 20plus TB a transfer appliance is recommended that can securely migrate data from one bucket to another. currently the appliance is provided on a per-request basis.  there is a form for it in gcp.  
+
+GOOGLE CLOUD SPANNER
+
     
+
+
+
 
     
 
