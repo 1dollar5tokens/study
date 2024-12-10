@@ -162,6 +162,20 @@ GOOGLE CLOUD SQL(structured query language)
 
 GOOGLE CLOUD BIGTABLE
 
+    Cloud Bigtable is a petabyte(1024TB) scale NoSQL(not only SQL or non-SQL) big data database service that can scale to bittions of rows and thousancs of columns.  Ideal for apps that require high throughput Cloud Bigtable is a perfect storage engine for batch MapReduce operations and machine learning apps. Cloud Bigtable stores data in tables, each of which is sorted key/value map.  The service is also equipped with multiple client libraries that allow you to easily integrate into existing environments.
+
+    Web indexing, google earth and youtube use bigtable
+
+    select bigtable and click create instance
+        instance is a container for my cluster
+
+    Enter the name and pick between production(three nodes min.)
+    or development instances. click creat when done.
+
+    now i can use Google Cloud Dataproc to use my Bigtable instance
+    Dataproc is Google's fully managed service for running Apache Hadoop and Apache Spark
+
+
 
 
 
