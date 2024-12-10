@@ -175,6 +175,16 @@ GOOGLE CLOUD BIGTABLE
     now i can use Google Cloud Dataproc to use my Bigtable instance
     Dataproc is Google's fully managed service for running Apache Hadoop and Apache Spark
 
+GOOGLE CLOUD PLATFORM NETWORKING(gcp)
+
+        VPC networks
+        Firewall rules
+        VPC peering
+        Private Google access
+        Other networking concepts
+
+
+
 
 
 
