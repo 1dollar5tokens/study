@@ -183,6 +183,62 @@ GOOGLE CLOUD PLATFORM NETWORKING(gcp)
         Private Google access
         Other networking concepts
 
+    VPC networks
+
+        vpc(virtural private cloud) are networks in the cloud.  Vpc is just like physical networks in a data center. Vpc provides virtual instances(vm) in the compute engine, kubernetes engine clusters and other resources.  Every project we might have will have a default network, with one subnets assigned to each region and can create more networks if i want
+
+        when creating a vpc network, its scope is global, that is vpc networks are not tied down or associated with a specific zone or region. Vpc network, all routes and associated firewall rules are global, the subnets are limited to the region.  All resource created with the vpc can talk to each other.using the internal private IP addresses, as long as they are not blocked by a firewall rules. Vms can talk to Google API by using private IP addresses if enabling Private Google access to them.
+
+            Private Google access allows an vm to communicate with Googles API's over internal private IP addresses instead of public
+
+        vpc only works in IPv4. Multicast, broadcast or IPv6 traffic is not supported by vpc networks. You can use IPv6  addresses to reach resources in a VPC network. For example, if your server needs a database, you can deploy the server in a datacenter that supports IPv6 while the database can be deployed in GCP. The server can communicate with the database that is configured with a IPv4 address.
+
+        You can divide vpcs into subnets. The subnets go in the region you choose.  VPCs can be auto or custom(used the most)
+            Auto: google provides 1 subnet in the region of the vpc. This is default
+                you can go from auto to custom but not the other way around.
+            Custom: You provide the subnet and the IP range in the region you chose. 
+
+        VPC networks per project        up to 5
+        VM instances per VPC network    up to 7000
+        VM instances per subnet         no separate limit
+
+        create a vpc
+            name
+            description
+            choose auto or not
+            region
+
+            if auto create  if custom continue
+
+            subnet name
+            region
+            create IP range ex: 10.0.177.0/24
+            Private Google access Default is off
+            Flog logs  default is off
+
+            add more subnets if you like
+
+            select any firewall rules or change rules if needed
+            Create
+
+            Other features
+                External IP addresses allow you to reserve a static address in a region and attach it to a virtual machine instance or a load balancer instance
+
+                Routes  A route is a networking mapping of an IP range to its destination.  Every network in GCP has routes in places that allow an instance to send traffic to each other or even across multiple subnets acroos different regions. Along with these routes, every network has a default route that directs traffic to outside the network. If you want to change the route you can override it with a custom static route.  If a route is in place the only way to prevent a instance from talking to another instance is with firewall rules.
+
+                when creating a vpc network a default route is created.  for each subnet you create one route is created for all local traffic and also for communication of vms between multiple subnets within a vpc network. 
+
+                If you create a custom static route for and IP address range that overlaps with the subnet's IP address range, then such static IP is automatically disabled.  GCP does this to protect inter-vm communication within a vpc network.
+
+                every route has a priority value associated with it. The priority value is used to break ties in cases where there is more than one matching route.  
+
+                The lower the value the higher the priority.  100 is a higher priority than 1000.
+
+                1000 is default.
+
+                
+
+
 
 
 
