@@ -236,7 +236,82 @@ GOOGLE CLOUD PLATFORM NETWORKING(gcp)
 
                 1000 is default.
 
-                
+                A instance must have a public IP for packages that are being routed through the internet.  If there is a route that routes all your private instances traffic to an internet gateway, such packets wil be dropped because your instance does not hav a public IP
+
+            Creating Routes
+            
+                name 
+                description
+                vpc network
+                destination IP range
+                Priority
+                Instance tags
+                Next hop  (internet gateway)
+                hit create
+
+            Routes can have custom route, default gateway, or even a VPN tunnel
+
+            Firewall Rules
+
+                firewall rues are applied at a networking level with every VPC network acting as a distributed firewill.  Even though firewall rules are applied at a networking level, they allow/deny connections at an instance level.
+
+                All firewall rules are specific to a VPC network
+
+                firewalls in gcp only support  IPv4
+
+                firewalls are stateful(remember info on the user or  session across multiple interactions)
+
+                stateless (doesn't store any data between request)
+
+            egress rule ensures all  outbound traffic.  Priority set to the lowest 65535
+
+            Ingress rule protects all instances by blocking all incoming traffic  Priority set to the lowest 65535
+
+            ICMP (internet control message protocol)  reports error, network congestions, timeouts, data transmission errors
+
+            ssh(secure shell) is port 22 allows 2 computers to talk
+
+            RDP port 3389(remote desktop protocol) ability to remotely control and operate computers
+
+            GCP has the ability to limit the source and target to GCP resources by using IAM service accounts.  Only one service  account can be associated with an instance
+
+        VPC network peering
+
+            the vpc network peering allows private(rfc 1918) connectivity across two vpc networks that can span over multiple projects and multiple organizations.  
+
+            Its private
+            There are no egress traffic costs
+            Usually for internal work in the office. Maybe between companies(not widely used)
+
+            Peering works with compute enging and app engine flexible environments. Routes, firewalls, VPNs, and other traffic tools are applied independently to each VPC network.  
+
+            When peering is set up, each side will  only work when the configs matches from both sides.  Either side can turn off the peering at anytime.  One vpc can connect with multiple vpc networks(up to 25).  the CIDR on one vpc cannot overlap with the other CIDR on another vpc network
+
+            vpc network can have 7500 vms and in all directly peered networks
+
+            only vpc networksaresupported for peering and not legacy networks
+
+            Once peered every internal private IP becomes accessible across the peered networks.  it becomes a huge network with multiple subnets in place guided by firewall rules to allow/deny traffic.  CIDRs wont filter traffic just firewalls
+
+            dissociative peering is not supported
+                n1 is connected with n2 and n3
+                but n2 and n3 are not connected
+                n2 and n3 can not talk even though they are connected to n1
+
+            an instance can have multiple network interfaces, each connected to a different vpc network
+
+            to peer
+                you will need
+
+                project id
+                vpc
+
+
+
+
+
+
+
 
 
 
