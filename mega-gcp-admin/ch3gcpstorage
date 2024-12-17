@@ -304,7 +304,64 @@ GOOGLE CLOUD PLATFORM NETWORKING(gcp)
                 you will need
 
                 project id
-                vpc
+                vpc name
+                ip range
+
+                you will also need their info also to connect
+
+PRIVATE GOOGLE ACCESS
+
+    vms with external IP address can access google APIs.
+    PGA allows you to access the googles APIs with an internal IP address rather than a public address.
+
+    APIs like Big table, Big Query, Cloud Dataproc, etc.
+
+    you can access PGA on a subnet(auto or custom) level and any vms
+
+    Private google access does not apply to cloud SQL. You don't get private connectivity.
+
+    If my vms have an external IP it is not effected if PGA is on.
+
+    DNS resolutions of Google domains does not change with PGA. Both internal and external IP addresses will resolve to external IP addresses of google domains.
+
+    For PGA to work properly must have a default-internet-gateway set in the vms so google services can be reached.  If you have routes configured to reach external IP addresses, then such a default internet gateway need not be set.
+
+        Google services reside on external IP address. for private google to work, a default-internet-gateway needs to be set to allow access to those services from an internal IP.
+
+LOAD BALANCING
+
+    Load Balancing control the amount of vms you deploy based on the traffic that is coming through.  Even delete vms that are unhealthy and add new ones to replace them.  
+    This is automatically managed by Google LB
+
+    There is different types of LB.  
+
+    TCP proxy LB
+        tcp distributes traffic aong groups of vms based on the prozimity to the user.
+
+    SSL proxy load balancing 
+        distributes SSL traffic
+
+    Http(s) LB
+        distributes Http(s) traffic among different instances.
+
+    GCP also allows for regional external LB that distributes network traffic among a pool of instances within a region
+
+    Regional internal LB distributes traffic from GCP virtual machine instances to a group of instances within the same region.  It is important to note that regional internal LB distributes traffic internally.
+
+        creating LB
+
+            Network services to LB
+            create LB
+            pick which type of LB
+            name it
+            configure   frontend
+                        backend
+                        
+
+
+
+
+
 
 
 
