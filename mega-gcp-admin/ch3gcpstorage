@@ -357,7 +357,19 @@ LOAD BALANCING
             configure   frontend
                         backend
                         
+GOOGLE CLOUD CDN(content delivery network)
 
+    Cloud CDN stores content locally at certain edges and works with the Http(s) LB services to deliver this content to users.  So google uses points of presents((pop)the google servers around the world) to cache the content so it can be closer and delivered to the users. When a user request info google sends the info to pop closest to the user.  caches it and if the user request the same info again before the CDN times out.
+
+    Noot all data will be stored on the CDN. whenever a user requests some content for the first time, the cache cannot fulfill the request.  The cache might attempt to look for this content in a nearby cache  If it can find it, it will serve that content to the user and also store a local copy.  If it does not find the content in a nearby cache, it will then send such a request to the HTTP(s) LB, which forwards it to one of the backend servers.
+
+    Google's caching mechanism also determines which content is more popular and ensures that it remains available while evicting content that is unpopulaar to conserve space. When some content is available in the cache, it is retrieved using a cache key and the cache responds directly to the user thereby giving a much faster response to the user's query. 
+
+        click cloud CDN 
+            add origin 
+            select a server from where your data originates and it will be the origin server.
+
+CLOUD VPN   
 
 
 
