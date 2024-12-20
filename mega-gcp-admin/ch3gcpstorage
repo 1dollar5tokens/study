@@ -371,6 +371,31 @@ GOOGLE CLOUD CDN(content delivery network)
 
 CLOUD VPN   
 
+    vpn makes is possible to connect to a on premise network through a IPSEC(internet protocol security) VPN tunnel.  This is for low data and encrypted traffic between your networks travel over the public internet.  The encryption protects the data and keeps cost low traveling the internet.
+
+    VPN example
+    vpc>cloud vpn gateway(with vpn static IP)>vpn tunnel using static routes(on internet)>on premise gateway(physical or cloud)>on premise network.
+
+    you can have site to site VPN and cloud VPN.  Which means you can have multiple site VPNs and a cloud VPN connected. With the Cloud VPN supporting both static and dynamic routes to manage traffic.  Cloud VPN is highly reliable and Google offers an SLA of 99.9% service reliability.
+
+    Cloud VPN only supports gateway to gateway scenarios and does not support client to gateway scenarios that are typically done using an SSL(secure sockets layer) VPN client software or TLS protocol (Transport layer security). Cloud VPN also does not support other VPN tech, only IPSEC is supported for now.  Can not have the same CIDR IP range for on premise network and your cloud VPN.
+
+CLOUD INTERCONNECT
+
+    Cloud interconnect makes it possible to connect your cloud vpn with the on premise vpn with out using the public internet.  This feature also provides RFC 1918 communications, making it possible to access internal private IPs directly across both networks. There are two ways you can consume cloud interconnect
+
+        Google cloud interconnect - Dedicated - provides a direct physical connection between your  on premises network and Google's network
+        
+        Google cloud interconnect - Partner - Your network and Google's network though ISP(internet service provider)
+
+        Cloud Interconnect is typically more efficient than having your traffic over public internet because you are going through Google's network so there is less stops to make.
+        Which means less issues Cloud interconnect is ideal for high traffic offering a max of 80gbs per second of total capacity per interconnect while the partner interconnect can offer speeds of 50MB per second to 10GBs per/s for each VLAN (virtual local area network).  
+        because of the dedicated nature of the network the egress cost remain low, making it the most cost-effective method if you have high volume traffic.  However, there are overhead costs associated with the setup of the cloud interconnect private/dedicated connections.
+
+Google Cloud Platform Containers
+
+
+
 
 
 
