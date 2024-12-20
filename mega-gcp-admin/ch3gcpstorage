@@ -392,7 +392,30 @@ CLOUD INTERCONNECT
         Which means less issues Cloud interconnect is ideal for high traffic offering a max of 80gbs per second of total capacity per interconnect while the partner interconnect can offer speeds of 50MB per second to 10GBs per/s for each VLAN (virtual local area network).  
         because of the dedicated nature of the network the egress cost remain low, making it the most cost-effective method if you have high volume traffic.  However, there are overhead costs associated with the setup of the cloud interconnect private/dedicated connections.
 
-Google Cloud Platform Containers
+GCP CONTAINERS
+
+    this chapter
+
+        Kubernetes concepts
+        administering a cluster
+        configuring cluster networking
+
+    Kubernetes concepts
+
+        Kubernetes provides a managed environment for deploying and managing your containerized apps.  Multiple GCE vms are grouped together to form a container cluster that are managed by the Kubernetes engine.  It is important to note that the Kubernetes engine only works with containerized apps.  you must package your apps into containers before you deploy them on Kubernetes engine.  In Kubernetes, these containers are called workloads.  At the time of the writing, Kubernetes only supports Docker containers.
+
+            Kubernetes is one of the most sought after skill in the market today.
+
+        The basic architecture of a Kubernetes engine is made up of a cluster master and worker machines called nodes.  The master and the node machines together form the cluster orchestration system. The cluster master is the core of the Kubernetes engine and runs the control panel processes that include the API server, scheduler, and core resource controller. The cluster master's API process is the hub of all communication as all interactions are done via the Kubernetes API calls.  This makes the API server, the single source of truth for the entire cluster.
+
+        A cluster typically contains one or more nodes, which are compute engine vms called worker machines that run your containerized workloads.  These compute vms are of standard vm type with 1 virtual CPU and 3.75GB or RAM, but these values are customizable.  These nodes(worker machines) are automatically created by the Kubernetes engine when you create a cluster.  The master controls each of these nodes and the Kubernetes engine can perform automatic repairs and upgrades on these cluster nodes. All necessary services to support Docker containers run on these nodes. The nodes also run the Kubernetes node agent (kubelet), which communicates with the master and also starts and stops the containers.
+
+        one thing to remember is that every node has some resources allocated to run Kubernetes services, so there will be a difference in the node's total resources and the node's allocatable resources:
+
+        
+    
+
+
 
 
 
