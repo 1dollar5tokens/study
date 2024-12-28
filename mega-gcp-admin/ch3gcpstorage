@@ -433,6 +433,77 @@ GCP CONTAINERS
     KUBERNETES NODES                                           KUBERNETES NODES
 
 
+          Kubernetes Master: This function as the API server receiving requests from developers. These requests can range from creating new container pods or adding more nodes (compute engine virtual machines)
+
+          Etcd: This functions as a backend system and is part of the API server that uses a distributed key-value system to store the cluster state. Ideally, etcd is run on a different machine to ensure availability.
+
+          Controller Manager: This has many controller functions such as the replication controller, endpoint controller, and namespace controller.  The primary function of a controller manager is to watch over the shared state of the cluster and attempt to move it to the final state. For example, the replication controller ensures that there are a right nember of replica pods running for each application.  
+
+          Node components:This run on every node that is part of the cluster. A node at a minimum contains the container runtime, such as Docker, to run the containers.
+
+          Kubelet service: This executes containers (pods) on the node and ensures its health.
+
+          Kube-Proxy: This functions as a network proxy or load balancer that allows for service abstraction
+
+          Kubernetes nodes run pods. A pod is the most basic object in Kubernetes. A pod can be one of more container but typically one container runs per pod. Multiple containers can be run in one pod and there containers together function as a single entity. In essence, a pod can be visualized as a self-contained logical host that has all the specific needs in place for a container to run.  Pods also allow access to networking and storage resources to the container. Each pod automatically gets assigned a unique IP address and contoiners in the pod share this IP address and network ports.
+
+          It is important to remember that pods are ephemeral and once a pod is deleted, it cannot be rocovered or brought back. If a host running multiple pods fails, that host is re-deployed and the controller determines if the pod needs to be deployed or not.  Typically, you do not create or delete a pod.  This is done by the controller deployed to manage the creation and deletion of pods. The controller manages the entire process for you, such as rolling updates for all pods
+
+
+    ADMINISTERING A CLUSTER
+
+        create new project and name it 
+        click create cluster
+        name it 
+        zone or regional 
+        how many nodes you want
+        machine type
+        
+
+        you can edit the nodes pool
+        name it 
+        choose version
+        number of nodes
+        image type
+        machine type
+        boot disk type
+        boot disk size
+        locol ssd disk
+        management
+        security
+        access scopes
+        save
+
+        create when done
+
+        you can add nodes if you want
+
+        CONNECTING TO THE CLUSTER
+
+        click connect after making cluster.  This should take you to command line. 
+            need google sdk installed on machine and the kubectl components installed for the Cloud SDK:
+
+            gcloud container clusters get-credentials (name of your cluster) --zone of cluster --project (name of project)
+
+            run in cloud shell
+
+            This gets the credentials and stores them, so now you can run the kubectl commands and manage the cluster
+
+            deploying workloads
+
+                in the side panel under kubernetes click workloads.
+
+                you can deploy workloads here
+
+                clicking deploy shows the deployment pane
+                custom images can be uploaded into the container registry
+                once deployed you can see it in a running state:
+
+                at this point, you are considered to have a deployment, which is a replicated, stateless application on your cluster.  you can create a stateful application as well.  stateful applications save the internal state of the application and require a persistent storage mapped to your pods.  A container's root filesystem is not suitable for storing persistent data. Remember that a containers are disposable entities and based on a scenario, a cluster manager may deletee or reschedule any container at any time. Any data stored locally on a container will be lost and is not suitable for storing a state of an application.
+
+
+
+
 
 
 
