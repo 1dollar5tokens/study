@@ -412,12 +412,25 @@ GCP CONTAINERS
 
         one thing to remember is that every node has some resources allocated to run Kubernetes services, so there will be a difference in the node's total resources and the node's allocatable resources:
 
-        
-    
-
-
-
-
+                                  KUBERNETES MASTER
+                                           >>>>>> controller Manager
+        developer/operator >>> api server>>
+                                           >>>>>> scheduler              USER
+                                                                           ^
+                                    etcd                                   ^
+                            V>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>^>v
+        v                   v                                                v
+        v   >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>v                 v
+        v                   v                               v                v
+    kubelet cAdvisor Kube-Proxy         |               kubelet cAdvisor  KubeProxy
+                                        |
+     pod pod            pod             |                  pod     pod         pod
+                                        |
+                         << Plugin network (example : flannel, weavenet)>>             
+                                        |
+                                        |
+                                        |
+    KUBERNETES NODES                                           KUBERNETES NODES
 
 
 
