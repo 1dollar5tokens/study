@@ -22,3 +22,15 @@ balence *= 1.05
 balence *= 1.05
 print(balence)
 
+#reassignment, mutation, or neither
+
+obj = 'ABcd'            #reassignment
+obj.upper()             #neither
+obj = obj.lower()       #reassignment
+print(len(obj))         #neither
+obj = list(obj)         #reassignment
+obj.pop()               #mutation           I thought it was neither
+obj[2] = 'X'            #mutation
+obj.sort()              #mutation           This one too
+set(obj)                #neither
+obj = tuple(obj)        #reassignment
