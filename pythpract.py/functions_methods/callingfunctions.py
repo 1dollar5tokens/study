@@ -4,3 +4,12 @@ def hello():
 
 hello()
 print(hello())
+
+print(
+    'hello',
+    'good-bye',
+    'farewell',
+    'adios',
+    'ciao',
+    'auf wiedersehen',
+)
